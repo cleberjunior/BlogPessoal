@@ -1,11 +1,15 @@
 package br.com.montreal.blog.model;
 
 import jakarta.persistence.*;
-import org.springframework.web.bind.annotation.RequestMapping;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -22,5 +26,6 @@ public class Usuario {
 
     private String foto;
 
+    @OneToMany(mappedBy = "usuario")
     private List<Postagem> postagens;
 }
