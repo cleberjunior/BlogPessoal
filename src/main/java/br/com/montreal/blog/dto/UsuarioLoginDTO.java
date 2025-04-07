@@ -4,6 +4,5 @@ public record UsuarioLoginDTO(String nome,
                               String email,
                               String senha,
                               String foto,
-                              String token
-) {
+                              String token) {
 }

@@ -34,4 +34,25 @@ public class Postagem {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+
+    @PrePersist
+    public void prePersist() {
+        this.data = LocalDateTime.now();
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
 }
