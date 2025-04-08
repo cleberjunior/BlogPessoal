@@ -1,9 +1,18 @@
 package br.com.montreal.blog.dto;
 
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-public record PostagemDTO(String titulo,
-                         String texto,
-                         Long temaId,
-                         Long usuarioId) {
+public record PostagemDTO(
+        @NotBlank
+        String titulo,
+
+        @NotBlank
+        String texto,
+
+        @NotNull
+        Long temaId,
+
+        @NotNull
+        Long usuarioId) {
 }

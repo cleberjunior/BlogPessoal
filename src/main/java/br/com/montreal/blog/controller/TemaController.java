@@ -3,6 +3,7 @@ package br.com.montreal.blog.controller;
 import br.com.montreal.blog.dto.TemaDTO;
 import br.com.montreal.blog.model.Tema;
 import br.com.montreal.blog.service.TemaService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +21,13 @@ public class TemaController {
     }
 
     @PostMapping
-    public ResponseEntity<Tema> inserir(@RequestBody TemaDTO temaDTO) {
+    public ResponseEntity<Tema> inserir(@RequestBody @Valid TemaDTO temaDTO) {
         Tema tema = service.save(temaDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(tema);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Tema> atualizar(@PathVariable Long id, @RequestBody TemaDTO temaDTO) {
+    public ResponseEntity<Tema> atualizar(@PathVariable Long id, @RequestBody @Valid TemaDTO temaDTO) {
         Tema tema = service.update(id, temaDTO);
         return ResponseEntity.ok(tema);
     }

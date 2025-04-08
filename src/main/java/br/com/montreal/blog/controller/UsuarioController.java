@@ -21,13 +21,13 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> inserir(@RequestBody UsuarioDTO usuarioDTO) {
+    public ResponseEntity<Usuario> inserir(@RequestBody @Valid UsuarioDTO usuarioDTO) {
         Usuario usuario = service.save(usuarioDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO) {
+    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody @Valid UsuarioDTO usuarioDTO) {
         Usuario usuario = service.update(id, usuarioDTO);
         return ResponseEntity.ok(usuario);
     }

@@ -1,4 +1,6 @@
 package br.com.montreal.blog.dto;
 
-public record TemaDTO(String descricao) {
+import jakarta.validation.constraints.NotBlank;
+
+public record TemaDTO(@NotBlank String descricao) {
 }
