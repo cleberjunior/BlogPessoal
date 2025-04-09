@@ -9,6 +9,8 @@ import br.com.montreal.blog.repository.TemaRepository;
 import br.com.montreal.blog.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PostagemService {
 
@@ -60,4 +62,21 @@ public class PostagemService {
         return postagemRepository.save(postagem);
     }
 
+    public boolean delete(Long id) {
+        Postagem postagem = postagemRepository.findById(id).get();
+        if (postagem != null) {
+            postagemRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    public List<Postagem> listarAll(){
+        List<Postagem> postagens = postagemRepository.findAll();
+        return postagens;
+    }
+
+    public Postagem findById(Long id) {
+        return postagemRepository.findById(id).get();
+    }
 }
