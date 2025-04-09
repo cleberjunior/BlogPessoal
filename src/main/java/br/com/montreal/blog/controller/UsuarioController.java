@@ -3,6 +3,7 @@ package br.com.montreal.blog.controller;
 import br.com.montreal.blog.dto.UsuarioDTO;
 import br.com.montreal.blog.model.Usuario;
 import br.com.montreal.blog.service.UsuarioService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
+@SecurityRequirement(name = "bearer-key")
 public class UsuarioController {
 
     private UsuarioService service;

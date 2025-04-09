@@ -2,8 +2,8 @@ package br.com.montreal.blog.controller;
 
 import br.com.montreal.blog.dto.PostagemDTO;
 import br.com.montreal.blog.model.Postagem;
-import br.com.montreal.blog.model.Postagem;
 import br.com.montreal.blog.service.PostagemService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/postagens")
+@SecurityRequirement(name = "bearer-key")
 public class PostagemController {
 
     private PostagemService service;
@@ -32,6 +33,15 @@ public class PostagemController {
                                                       @RequestBody @Valid PostagemDTO postagemDTO) {
         Postagem postagem = service.update(id, postagemDTO);
         return ResponseEntity.ok(postagem);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deletar(@PathVariable Long id) {
+        if (service.delete(id)) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping
