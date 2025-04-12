@@ -9,7 +9,7 @@ Projeto backend desenvolvido com Spring Boot, com funcionalidades de cadastro de
 - **[Java 17](https://www.oracle.com/java)**
 - **[Spring Boot](https://spring.io/projects/spring-boot)**
 - **[Spring Boot Data JPA](https://spring.io/projects/spring-boot)**
-- **[Spring Security JWT](https://spring.io/projects/spring-boot)**
+- **[Spring Security com JWT](https://spring.io/projects/spring-boot)**
 - **[Maven](https://maven.apache.org)**
 - **[PostgreSQL](https://www.postgresql.org)**
 - **[Lombok](https://projectlombok.org)**
