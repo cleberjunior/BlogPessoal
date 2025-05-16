@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.montreal.blog.user.Usuario;
+import br.com.montreal.blog.user.UsuarioEntity;
 import jakarta.validation.Valid;
 
 @RestController
@@ -27,7 +27,7 @@ public class AuthenticationController {
         var token = new UsernamePasswordAuthenticationToken(login.email(), login.senha());
         var authentication = manager.authenticate(token);
 
-        var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
+        var tokenJWT = tokenService.gerarToken((UsuarioEntity) authentication.getPrincipal());
 
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }

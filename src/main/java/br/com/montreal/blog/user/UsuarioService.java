@@ -16,8 +16,8 @@ public class UsuarioService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Usuario save(UsuarioDTO usuarioDTO) {
-        Usuario usuario = new Usuario();
+    public UsuarioEntity save(UsuarioDTO usuarioDTO) {
+        UsuarioEntity usuario = new UsuarioEntity();
         usuario.setNome(usuarioDTO.nome());
         usuario.setEmail(usuarioDTO.email());
         usuario.setSenha(passwordEncoder.encode(usuarioDTO.senha()));
@@ -26,8 +26,8 @@ public class UsuarioService {
         return repository.save(usuario);
     }
 
-    public Usuario update(Long id, UsuarioDTO usuarioDTO) {
-        Usuario usuario = repository.findById(id).get();
+    public UsuarioEntity update(Long id, UsuarioDTO usuarioDTO) {
+        UsuarioEntity usuario = repository.findById(id).get();
         usuario.setNome(usuarioDTO.nome());
         usuario.setEmail(usuarioDTO.email());
         usuario.setSenha(passwordEncoder.encode(usuarioDTO.senha()));
@@ -37,7 +37,7 @@ public class UsuarioService {
     }
 
     public boolean delete(Long id) {
-        Usuario usuario = repository.findById(id).get();
+        UsuarioEntity usuario = repository.findById(id).get();
         if (usuario != null) {
             repository.deleteById(id);
             return true;
@@ -45,12 +45,12 @@ public class UsuarioService {
         return false;
     }
 
-    public List<Usuario> listarAll(){
-        List<Usuario> usuarios = repository.findAll();
+    public List<UsuarioEntity> listarAll(){
+        List<UsuarioEntity> usuarios = repository.findAll();
         return usuarios;
     }
 
-    public Usuario findById(Long id) {
+    public UsuarioEntity findById(Long id) {
         return repository.findById(id).get();
     }
 }

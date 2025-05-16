@@ -1,7 +1,9 @@
-package br.com.montreal.blog.post;
+package br.com.montreal.blog.tema;
 
 import java.io.Serializable;
 import java.util.List;
+
+import br.com.montreal.blog.post.PostagemEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "temas")
-public class Tema implements Serializable {
+public class TemaEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tema_sequence")
@@ -35,7 +37,7 @@ public class Tema implements Serializable {
     @OneToMany(mappedBy = "tema")
     private List<PostagemEntity> postagens;
 
-    public Tema(Long id) {
+    public TemaEntity(Long id) {
         this.id = id;
     }
 }

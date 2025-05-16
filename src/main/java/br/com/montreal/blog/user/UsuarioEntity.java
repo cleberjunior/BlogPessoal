@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements UserDetails {
+public class UsuarioEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_sequence")
@@ -48,7 +48,7 @@ public class Usuario implements UserDetails {
     @OneToMany(mappedBy = "usuario")
     private List<PostagemEntity> postagens;
 
-    public Usuario(Long id) {
+    public UsuarioEntity(Long id) {
         this.id = id;
     }
 

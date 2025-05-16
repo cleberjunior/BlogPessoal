@@ -2,9 +2,11 @@ package br.com.montreal.blog.post;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import br.com.montreal.blog.tema.TemaEntity;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import br.com.montreal.blog.user.Usuario;
+import br.com.montreal.blog.user.UsuarioEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -50,18 +52,17 @@ public class PostagemEntity implements Serializable {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "tema_id")
-    private Tema tema;
+    private TemaEntity tema;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private UsuarioEntity usuario;
 
     public PostagemEntity(String titulo, String texto, Long temaId,
             Long usuarioId) {
         this.titulo = titulo;
         this.texto = texto;
-        this.tema = new Tema(temaId);
-        this.usuario = new Usuario(usuarioId);
+        this.tema = new TemaEntity(temaId);
+        this.usuario = new UsuarioEntity(usuarioId);
     }
-
 }

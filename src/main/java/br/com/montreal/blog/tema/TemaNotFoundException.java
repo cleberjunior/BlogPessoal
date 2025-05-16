@@ -1,4 +1,4 @@
-package br.com.montreal.blog.post;
+package br.com.montreal.blog.tema;
 
 public class TemaNotFoundException extends RuntimeException {
 

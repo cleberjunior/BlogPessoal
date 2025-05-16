@@ -1,6 +1,10 @@
 package br.com.montreal.blog.post;
 
 import java.util.List;
+
+import br.com.montreal.blog.tema.TemaEntity;
+import br.com.montreal.blog.tema.TemaNotFoundException;
+import br.com.montreal.blog.tema.TemaRepository;
 import org.springframework.stereotype.Service;
 import br.com.montreal.blog.user.UsuarioNotFoundException;
 import br.com.montreal.blog.user.UsuarioRepository;
@@ -29,8 +33,8 @@ public class PostagemService {
             throw new TemaNotFoundException(dto.temaId());
         }
 
-        PostagemEntity novaPostasgem = PostagemMapper.toEntity(dto);
-        PostagemEntity postagemCriada = postagemRepository.save(novaPostasgem);
+        PostagemEntity novaPostagem = PostagemMapper.toEntity(dto);
+        PostagemEntity postagemCriada = postagemRepository.save(novaPostagem);
 
         return PostagemMapper.toDTO(postagemCriada);
     }
@@ -39,7 +43,7 @@ public class PostagemService {
         PostagemEntity postagem = postagemRepository.findById(id)
                 .orElseThrow(() -> new PostagemNotFoundException(id));
 
-        Tema tema = temaRepository.findById(dto.temaId())
+        TemaEntity tema = temaRepository.findById(dto.temaId())
                 .orElseThrow(() -> new TemaNotFoundException(dto.temaId()));
 
         postagem.setTitulo(dto.titulo());
