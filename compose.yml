@@ -4,11 +4,11 @@ services:
   blog_db:
     image: postgres:12
     environment:
-      POSTGRES_DB: blog_pessoal
+      POSTGRES_DB: blogdb
       POSTGRES_USER: blog
       POSTGRES_PASSWORD: blog
     volumes:
-      - blogdb:/var/lib/postgresql
+      #- blogdb:/var/lib/postgresql
       - blogdb_data:/var/lib/postgresql/data
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U blog" ]
@@ -39,7 +39,7 @@ services:
       POSTGRES_USER: sonar
       POSTGRES_PASSWORD: sonar
     volumes:
-      - postgresql:/var/lib/postgresql
+      #- postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U sonar"]
@@ -51,7 +51,7 @@ volumes:
   sonarqube_data:
   sonarqube_extensions:
   sonarqube_logs:
-  postgresql:
+  #postgresql:
   postgresql_data:
-  blogdb:
+  #blogdb:
   blogdb_data:
