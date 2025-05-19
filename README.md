@@ -1,6 +1,6 @@
-## 💻 Blog Pessoal
+# 💻 Blog Pessoal (Acelera Maker/Montreal)
 
-Projeto backend desenvolvido com Spring Boot, com funcionalidades de cadastro de postagens, temas e gerenciamento usuários. Também conta com autenticação via **JWT**, criptografia de senhas com **BCrypt** e integração com **SonarQube** para análise de código.
+Projeto backend desenvolvido com Spring Boot, com funcionalidades de cadastro de postagens, temas e gerenciamento de usuários. Também conta com autenticação via **JWT**, criptografia de senhas com **BCrypt** e integração com **SonarQube** para análise de código.
 
 ---
 
