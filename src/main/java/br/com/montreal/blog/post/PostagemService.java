@@ -47,7 +47,8 @@ public class PostagemService {
                 .orElseThrow(() -> new TemaNotFoundException(dto.temaId()));
 
         postagem.setTitulo(dto.titulo());
-        postagem.setTexto(dto.texto());
+        postagem.setConteudo(dto.conteudo());
+        postagem.setAutor(dto.autor());
         postagem.setTema(tema);
 
         return PostagemMapper.toDTO(postagemRepository.save(postagem));

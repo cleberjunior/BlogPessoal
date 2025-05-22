@@ -13,7 +13,11 @@ public record PostagemDTO(
 
         @NotBlank
         @Size(min = 10, max = 1000)
-        String texto,
+        String conteudo,
+
+        @NotBlank
+        @Size(min = 10, max = 255)
+        String autor,
 
         @NotNull
         Long temaId,

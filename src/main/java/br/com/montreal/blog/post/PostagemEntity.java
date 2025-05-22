@@ -40,7 +40,10 @@ public class PostagemEntity implements Serializable {
     private String titulo;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String texto;
+    private String conteudo;
+
+    @Column(nullable = false, length = 255)
+    private String autor;
 
     @CreationTimestamp
     @Column(insertable = true, updatable = false, nullable = false)
@@ -58,10 +61,11 @@ public class PostagemEntity implements Serializable {
     @JoinColumn(name = "usuario_id")
     private UsuarioEntity usuario;
 
-    public PostagemEntity(String titulo, String texto, Long temaId,
+    public PostagemEntity(String titulo, String conteudo, String autor, Long temaId,
             Long usuarioId) {
         this.titulo = titulo;
-        this.texto = texto;
+        this.conteudo = conteudo;
+        this.autor = autor;
         this.tema = new TemaEntity(temaId);
         this.usuario = new UsuarioEntity(usuarioId);
     }

@@ -7,14 +7,15 @@ public class PostagemMapper {
     }
 
     public static PostagemEntity toEntity(PostagemDTO dto) {
-        return new PostagemEntity(dto.titulo(), dto.texto(), dto.temaId(), dto.usuarioId());
+        return new PostagemEntity(dto.titulo(), dto.conteudo(), dto.autor(), dto.temaId(), dto.usuarioId());
     }
 
     public static PostagemDTO toDTO(PostagemEntity entity) {
         return new PostagemDTO(
                 entity.getId(),
                 entity.getTitulo(),
-                entity.getTexto(),
+                entity.getConteudo(),
+                entity.getAutor(),
                 entity.getTema().getId(),
                 entity.getUsuario().getId());
     }
