@@ -4,9 +4,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public record PostagemDTO(
-        Long id,
+import java.time.LocalDateTime;
 
+public record PostagemDTO(
         @NotBlank
         @Size(min = 10, max = 255)
         String titulo,
@@ -18,6 +18,8 @@ public record PostagemDTO(
         @NotBlank
         @Size(min = 10, max = 255)
         String autor,
+
+        LocalDateTime criadoEm,
 
         @NotNull
         Long temaId,

@@ -4,19 +4,10 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import br.com.montreal.blog.tema.TemaEntity;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import br.com.montreal.blog.user.UsuarioEntity;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -50,16 +41,28 @@ public class PostagemEntity implements Serializable {
     private LocalDateTime criadoEm;
 
     @UpdateTimestamp
-    @Column(insertable = false, updatable = true, nullable = false)
+    @Column(updatable = true, nullable = false)
     private LocalDateTime atualizadoEm;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "tema_id")
     private TemaEntity tema;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "usuario_id")
     private UsuarioEntity usuario;
+
+    @PrePersist
+    protected void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        this.criadoEm = now;
+        this.atualizadoEm = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.atualizadoEm = LocalDateTime.now();
+    }
 
     public PostagemEntity(String titulo, String conteudo, String autor, Long temaId,
             Long usuarioId) {
