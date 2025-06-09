@@ -26,7 +26,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<UsuarioEntity> inserir(@RequestBody @Valid UsuarioDTO usuarioDTO) {
+    public ResponseEntity<UsuarioEntity> criar(@RequestBody @Valid UsuarioDTO usuarioDTO) {
         UsuarioEntity usuario = service.save(usuarioDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
     }
@@ -47,12 +47,12 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UsuarioEntity>> listarTodos(){
+    public ResponseEntity<List<UsuarioDTO>> listarTodos(){
         return ResponseEntity.ok(service.listarAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioEntity> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<UsuarioDTO> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 }

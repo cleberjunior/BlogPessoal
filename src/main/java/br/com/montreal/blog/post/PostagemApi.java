@@ -32,5 +32,4 @@ public interface PostagemApi {
 
     @GetMapping("/{id}")
     ResponseEntity<PostagemDTO> buscarPorId(@PathVariable Long id);
-
 }

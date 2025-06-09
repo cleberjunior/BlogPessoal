@@ -29,8 +29,10 @@ public class SecurityConfigurations {
                 .csrf(csrf -> csrf.disable()) // desabilita CSRF
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.GET, "/login", "/api/postagens", "/api/usuarios", "/api/temas").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/postagens/**", "/api/usuarios/**", "/api/temas/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login", "/api/postagens", "/api/usuarios", "/api/temas").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/postagens/**", "/api/usuarios/**", "/api/temas/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/postagens/**", "/api/usuarios/**", "/api/temas/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

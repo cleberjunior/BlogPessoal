@@ -7,6 +7,8 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 public record PostagemDTO(
+        Long id,
+
         @NotBlank
         @Size(min = 10, max = 255)
         String titulo,

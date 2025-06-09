@@ -45,12 +45,25 @@ public class UsuarioService {
         return false;
     }
 
-    public List<UsuarioEntity> listarAll(){
-        List<UsuarioEntity> usuarios = repository.findAll();
-        return usuarios;
+    public List<UsuarioDTO> listarAll(){
+        return repository.findAll().stream()
+                .map(usuario -> new UsuarioDTO(
+                        usuario.getId(),
+                        usuario.getNome(),
+                        usuario.getEmail(),
+                        usuario.getSenha(),
+                        usuario.getFoto()))
+                .toList();
     }
 
-    public UsuarioEntity findById(Long id) {
-        return repository.findById(id).get();
+    public UsuarioDTO findById(Long id) {
+        UsuarioEntity usuario = repository.findById(id).get();
+        return new UsuarioDTO(
+                usuario.getId(),
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.getSenha(),
+                usuario.getFoto());
+        //return repository.findById(id).get();
     }
 }

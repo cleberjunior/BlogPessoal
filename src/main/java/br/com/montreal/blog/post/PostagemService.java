@@ -1,6 +1,5 @@
 package br.com.montreal.blog.post;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import br.com.montreal.blog.tema.TemaEntity;
@@ -69,7 +68,6 @@ public class PostagemService {
     public PostagemDTO buscarPorId(Long id) {
         PostagemEntity postagem = postagemRepository.findById(id)
                 .orElseThrow(() -> new PostagemNotFoundException(id));
-
         return PostagemMapper.toDTO(postagem);
     }
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import br.com.montreal.blog.tema.TemaEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -46,10 +47,12 @@ public class PostagemEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "tema_id")
+    @JsonIgnore // Evita loop ao serializar
     private TemaEntity tema;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @JsonIgnore // Evita loop ao serializar
     private UsuarioEntity usuario;
 
     @PrePersist
